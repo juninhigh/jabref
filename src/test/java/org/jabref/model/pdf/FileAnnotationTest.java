@@ -48,4 +48,10 @@ public class FileAnnotationTest {
 
         assertEquals("this is an annotation that is very long and g...", fileAnnotation.toString());
     }
+    @Test
+    public void testParseNullADate() {
+        String dateString = null;
+        LocalDateTime date = FileAnnotation.extractModifiedTime(dateString);
+        assertTrue(ChronoUnit.SECONDS.between(LocalDateTime.now(), date) <= 0.1);
+    }
 }
